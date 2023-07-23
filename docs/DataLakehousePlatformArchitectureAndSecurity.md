@@ -83,6 +83,101 @@ With Photon you see increased speed for use cases such as data ingestion, ETL, s
 - Single source of truth for all user identities and data assets
 - It provides a single access point with a common interface for collaboration from any workspace in the platform, removing data team silos
 - Allows to restrict access to certain rows and columns to users or groups authorized to query them.
-- Attribute-based access control allows to further simplify geovernance at scale by controlling access to multiple data items at one time. For example, personally identifiable information in multiple given columns can be tagged as such and a single rule can restrict or provide access as needed.
+- Attribute-based access control allows to further simplify geovernance at scale by controlling access to multiple data items at one time. 
+  - For example, personally identifiable information in multiple given columns can be tagged as such and a single rule can restrict or provide access as needed.
 - Highly detailed audit trail
+- Much faster metadata processing when compared to Hive metastore
 
+
+<br>
+
+
+## Delta sharing
+
+- Open source solution to share live data from your Lakehouse to any computing platform securely.
+- Recipients don't have to be on the same cloud or even use the Databricks Lakehouse platform.
+
+### Key benefits
+- Open cross-platform sharing
+    - Native integration with PowerBI, Tableau, Spark, pandas and Java
+- Share live data without copying it
+- Centralized administration and governance
+  - Governed, tracked and audited from a single location
+  - Allowing usage to be monitored at the table, partition and version level
+- Marketplace for data products
+- Privacy-safe data clean rooms
+  - Meaning collaboration between data providers and recipients is hosted in a secure environment while safeguarding data privacy
+
+- Unity catalog natively supports Delta sharing:
+![Unity catalog and Delta sharing integration](img/unityCatalog_deltaSharing.PNG)
+
+
+<br>
+
+
+## Security
+
+Two separate planes:
+- Control plane
+- Managed backend services that databricks provides
+  - These live in databricks own cloud account
+  - They are aligned with whatever cloud service the customer is using
+- Data plane
+  - where your data is processed
+  - You can choose to run the compute resources in:
+    - your business owner own cloud account
+    - serverless
+
+![Security data planes](img/security_planes.PNG)
+
+- All data stays in the data plane except for Notebooks, Configuration logs and user information that are available in the control plane.
+- The information is encrypted at rest and communication to/from the control plane is encrypted in transit
+
+
+### Security of the data plane
+
+#### Networking
+- If the business decides to host the data plane, databricks will configure the networking by default
+- The serverless data plane networking infrastructure is managed by databricks in a databricks cloud service provider account and shared among customers with additional network boundaries between workspaces and clusters
+
+#### Servers
+- Databricks clusters are run using the latest hardened system images 
+- Clusters are short-lived, often terminated after a job and do not persist data after termination
+- Code is launched in an unprivileged container
+
+#### Databricks
+- Databricks access to the environment is limited to cloud service provider APIs for automation and support access
+- Custom-built system allowing databricks staff to fix issues or handle support requests
+
+
+### User identity and access
+- table ACLs feature
+  - traditional SQL based statements to manage access to data and enable fine-grained view-based access
+- IAM instance profiles
+  - enable AWS clusters to assume an IAM role so users of that cluster access allowed resources automatically
+- Securely stored access key
+- The Secrets API
+
+
+### Instant compute and serverless
+
+Compute resource challenge
+![Compute resource challenge](img/compute_resource_challenge.PNG)
+
+To solve this problems, databricks has released the serverless compute option.
+![Serverless compute](img/serverless_compute.PNG)
+
+![Serverless compute architecture](img/serverless_compute_architecture.PNG)
+- Three layers of isolation
+  - The container hosting the runtime
+  - The VM hosting the container
+  - The Virtual Network for the workspace
+
+With no sharing and no cross-network traffic allowed ensuring your work is secure.
+When finished, the VM is terminated and deleted and a new VM is released back into the pool of waiting resources.
+
+
+<br>
+
+
+## Data management terminoligy
