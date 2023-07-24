@@ -180,4 +180,25 @@ When finished, the VM is terminated and deleted and a new VM is released back in
 <br>
 
 
-## Data management terminoligy
+## Data management terminology
+
+![Unity catalog metastore](img/unity_catalog_metastore.PNG)
+
+- **Metastore** is a construct that represents the metadata, which is the information about the data objects being managed by the metastore and the ACLs governing those lists
+- **Catalog** is the topmost container for data objects. A metastore can have as many catalogs as desired.
+    - To reference data objects we need to use a three-level namespace: 
+    SELECT * FROM catalog.schema.table
+    - **Schema**
+        - **Table** contains an ordered list of columns. 
+            - Managed table: data files are stored in the metastores's managed storage location
+            - External table: data files are stored in an external storage location
+        - **View** are stored queries executed when you query the view. They are read-only.
+        - **UDFs** encapsulate custom functionality into a function that can be evoked within queries
+- **Storage credential** are used to authenticate with cloud storage containers
+- **External locations** are used to provide Access Control at the file level 
+- **Share** and **Recipient** relate to Delta Sharing. It is used to explicitly declare shares, read-only logical collections of tables that can be shared with recipients inside or outside of the organization.
+
+
+The metastore is best described as a logical construct for organizing your data and its associated metadata rather than a physical container itself.
+The metastore essentially functions as a reference for a collection of metadata and a link to the cloud storage container.
+The metadata, information about the data objects and the ACLs for those objects are stored in the control plane, and data related to objects mantained by the metastore is stored in a cloud storage container. 
