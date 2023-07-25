@@ -1,6 +1,6 @@
 # Supported Workloads on the Databricks Lakehouse Platform
 
-### Data Warehousing
+## Data Warehousing
 
 We know that traditional data warehouses are no longer able to keep up with the needs of today's world. 
 
@@ -23,7 +23,7 @@ These tasks are supported by databricks SQL and serverless SQL
 <br>
 
 
-### Data Engineering
+## Data Engineering
 
 - Data engineering workload refers to:
     - Ingesting, transforming and orchestrating data out to different data teams
@@ -97,6 +97,82 @@ Fully managed orchestration service that allows data teams to build reliable wor
 <br>
 
 
-### Data Streaming
+## Data Streaming
+
+![Real time applications](img/real_time_applications.PNG)
+
+#### Data Streaming Use Cases
+- Real-time analytics
+  - Analyze streaming data for instant insights and faster decisions
+- Real-time ML
+  - Train models on the fresh data. Score in real-time
+- Real-time applications
+  - Embed automatic and real-time actions into business applications
+
+#### Industry Specific Use Cases
+- Retail
+  - Real-time inventory helps support business activities, pricing and supply chain demands
+- Industrial automation
+  - Streaming and predictive analysis help manufacturers improve production processes and product quality, sending alerts and shutting down production automatically if there is an active dip in quality
+- Healthcare
+  - Streaming patient monitor data can help encourage appropiate medication and care is provided when is needed without delay
+- Financial institutions
+  - Real-time analysis of transactions can detect fraud activity and send alerts. By using ML algorithms, firms can gain insight from fraud analytics to identify patters
+- ...
 
 
+#### Differentiating capabilities for data streaming on the lakehouse
+1. Build streaming pipelines and applications faster
+2. Simplify operations with automation
+3. Unified governance for real time and historical data
+
+![Reference architecture for streaming use cases](img/reference_architecture_streaming_use_cases.PNG)
+
+
+<br>
+
+
+## Data science and machine learning
+
+#### Challenges to successful ML/AI
+- Siloed and disparate data systems
+- Complex experimentation environments
+- Getting models to production
+- Multiple tools available
+- Experiments are hard to track
+- Reproducing results is difficult
+- ML is hard to deploy
+
+![Notebooks UI](img/notebooks_data_science.PNG)
+
+Databricks Lakehouse Platform provides a space for Data scientists, ML engineers and developers to use data and drive insights.
+
+- Notebook style exploratory analysis
+- Support from multiple languages
+- Built-in visualizations and dashboards
+- Code sharing
+  - Automatic versioning
+  - git integration
+  - role-based access control
+
+#### Databricks ML Runtime
+- Optimized preconfigured ML Frameworks
+- Turnkey distributed ML
+- Built-in AutoML
+- GPU support
+
+![Databricks ML Runtime](img/databricks_ml_runtime.PNG)
+
+#### mlflow
+Open source ML platform.
+- Track model training sessions within the runtime
+- Package and reuse models with ease
+
+A feature store is available allowing you to create new features and reuse existing ones for training and scoring ML models
+
+#### AutoML
+Low/No-code dataset experimentation
+- Points to your dataset and automatically trains models and tunes hyper parameters
+- Reports back metrics related to the results as well as the code necessary to repeat the training 
+
+![MLOps/Governance](img/mlOps_governance.PNG)
