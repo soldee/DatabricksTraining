@@ -31,5 +31,6 @@ RUN .local/bin/pip3 install notebook
 ENV PYSPARK_DRIVER_PYTHON='jupyter'
 ENV PYSPARK_DRIVER_PYTHON_OPTS='notebook --ip 0.0.0.0 --no-browser --port=8081 --allow-root'
 
+WORKDIR /home/ubuntu/notebooks
 
 CMD ["pyspark"]

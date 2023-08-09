@@ -1,0 +1,1 @@
+docker container run -d --rm -p 8081:8081 -p 4040:4040 --name spark-notebook-py -v /home/vagrant/docker:/home/ubuntu/notebooks spark-notebook-py
